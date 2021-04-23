@@ -1,0 +1,13 @@
+select {
+  width: 100%;
+  font-size: 14px;
+  padding: .3em .5em;
+  height: 2.3em;
+  background-color: #fff;
+  border: 1px solid #706f6f;
+  border-radius: 6px;
+  outline: none;
+  &:focus {
+    border-color: #129fea;
+  }
+}
