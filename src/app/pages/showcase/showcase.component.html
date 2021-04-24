@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <h1>Витрина</h1>
+  <div class="select-box">
+    <div class="select-box__item">
+      <app-select [options]="filtersData?.subject" (selectionChange)="onSelectionChange($event,'subject')"></app-select>
+    </div>
+    <div class="select-box__item">
+      <app-select [options]="filtersData?.genre" (selectionChange)="onSelectionChange($event,'genre')"></app-select>
+    </div>
+    <div class="select-box__item">
+      <app-select [options]="filtersData?.gradeList"
+                  (selectionChange)="onSelectionChange($event,'gradeList')"></app-select>
+    </div>
+    <div class="search-box">
+      <label>
+        <input #searchBox type="search" class="search-title">
+      </label>
+      <button (click)="applySearch(searchBox)" class="btn-search">
+      </button>
+    </div>
+    <div class="select-box__checkbox">
+      <span>рубли </span>
+      <label class="switch">
+        <input type="checkbox" (change)="onPriceByChange($event)">
+        <span class="slider round"></span>
+      </label>
+      <span> бонусы</span>
+    </div>
+  </div>
+  <div *ngIf="loading" class="loading">{{loading}}</div>
+  <div class="card-list">
+    <ng-container *ngFor="let item of filteredItems | filter:search">
+      <app-card [item]="item" [priceByBonus]="priceByBonus"></app-card>
+    </ng-container>
+  </div>
+</div>

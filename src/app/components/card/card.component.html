@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card__img">
+    <img [src]="'https://www.imumk.ru/svc/coursecover/'+item.courseId" alt="">
+  </div>
+  <div class="card__info">
+    <div class="card__content">
+      <h3 class="card__title">
+        {{item.subject}}
+      </h3>
+      <p class="card__grade">
+
+        {{item.gradeList | listToEdges}}
+      </p>
+      <p class="card__genre">
+        {{item.genre}}
+      </p>
+      <div class="card__link">
+        <a [href]="item.urlOffer">Подробнее</a>
+      </div>
+
+    </div>
+
+    <button class="btn-card">
+      <span *ngIf="!priceByBonus; else bonus">{{item.price}}</span>
+      <ng-template #bonus>{{item.priceBonus}}</ng-template>
+    </button>
+  </div>
+
+</div>
